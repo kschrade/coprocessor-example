@@ -1,0 +1,37 @@
+headers:
+  all:
+    request:
+      - propagate:
+          matching: .*
+
+supergraph:
+  listen: 127.0.0.1:4000
+  introspection: true
+sandbox:
+  enabled: true
+homepage:
+  enabled: false
+include_subgraph_errors:
+  all: true
+
+coprocessor:
+  url: http://127.0.0.1:3000
+  subgraph:
+    all:
+      response:
+        headers: true
+        context: true
+        uri: true
+        service_name: true
+        body: true
+  router:
+    request:
+      headers: true
+      body: true
+      context: true
+      sdl: false
+    response:
+      headers: true
+      body: true
+      context: true
+      sdl: false
